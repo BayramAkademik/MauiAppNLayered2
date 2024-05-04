@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppNLayered1.MusteriEditPage"
+             Title="MusteriEditPage">
+
+
+    <StackLayout Margin="20">
+
+        <Grid ColumnDefinitions="Auto,*"
+          RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <Label Text="Ad"      Grid.Column="0" Grid.Row="0"/>
+            <Label Text="Soyad"   Grid.Column="0" Grid.Row="1"/>
+            <Label Text="Telefon" Grid.Column="0" Grid.Row="2"/>
+            <Label Text="Email"   Grid.Column="0" Grid.Row="3"/>
+            <Label Text="Adres"   Grid.Column="0" Grid.Row="4"/>
+
+            <Entry  x:Name="txtAd"   Placeholder="Ad"      Grid.Column="1" Grid.Row="0" Text="{Binding Ad}" />
+            <Entry  x:Name="txtSoy"  Placeholder="Soyad"   Grid.Column="1" Grid.Row="1" Text="{Binding Soyad}" />
+            <Entry  x:Name="txtTel"  Placeholder="Telefon" Grid.Column="1" Grid.Row="2" Text="{Binding Telefon}"  Keyboard="Telephone"/>
+            <Entry  x:Name="txtMai"  Placeholder="Email"   Grid.Column="1" Grid.Row="3" Text="{Binding Email}"    Keyboard="Email"/>
+            <Editor x:Name="txtAdr"  Placeholder="Adres"   Grid.Column="1" Grid.Row="4" Text="{Binding Adres}" />
+
+        </Grid>
+
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="End" Margin="20">
+            <Button Style="{DynamicResource OkButton}"     Clicked="OkButton_Clicked"/>
+            <Button Style="{DynamicResource CancelButton}" Clicked="CancelButton_Clicked"/>
+        </HorizontalStackLayout>
+        
+    </StackLayout>
+
+</ContentPage>

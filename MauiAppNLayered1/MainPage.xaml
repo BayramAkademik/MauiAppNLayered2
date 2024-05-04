@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppNLayered1.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ekle" Order="Primary" Clicked="MusteriEkleClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <CollectionView x:Name="listMusteriler">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <SwipeView>
+                    <SwipeView.LeftItems>
+                        <SwipeItems>
+
+                            <SwipeItem Text="Düzenle"
+                                       CommandParameter="{Binding ID}"
+                                       Clicked="MusteriDuzenleClicked"/>
+
+                            <SwipeItem Text="Resim"
+                                       CommandParameter="{Binding ID}"
+                                       Clicked="MusteriResimClicked"/>
+
+                        </SwipeItems>
+                    </SwipeView.LeftItems>
+                    
+                    <SwipeView.RightItems>
+                        <SwipeItems>
+                            <SwipeItem Text="Sil"
+                                       CommandParameter="{Binding ID}"
+                                       Clicked="MusteriSilClicked"/>
+                        </SwipeItems>
+
+                    </SwipeView.RightItems>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto, Auto"
+                      RowDefinitions="Auto,Auto,Auto">
+
+                        <Image Source="{Binding Resim}" Grid.Column="0" Grid.RowSpan="3" />
+
+                        <Label Text="{Binding AdSoyad}" Grid.Column="1" Grid.Row="0"/>
+                        <Label Text="{Binding Telefon}" Grid.Column="1" Grid.Row="1"/>
+                        <Label Text="{Binding Email}"   Grid.Column="1" Grid.Row="2"/>
+
+                        <Label Text="{Binding ToplamBorc}" Grid.Column="2" Grid.RowSpan="3"/>
+
+                        <Button Text="Düzenle" CommandParameter="{Binding ID}" Grid.Column="3" Clicked="MusteriDuzenleClicked"/>
+                        <Button Text="Sil" CommandParameter="{Binding ID}"     Grid.Row="1" Grid.Column="3" Clicked="MusteriSilClicked"/>
+
+                    </Grid>
+
+                    <FlyoutBase.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="Düzene"
+                                            Clicked="MusteriDuzenleClicked"
+                                            CommandParameter="{Binding ID}"/>
+
+                            <MenuFlyoutItem Text="Sil"
+                                            Clicked="MusteriSilClicked"
+                                            CommandParameter="{Binding ID}"/>
+
+                            <MenuFlyoutItem Text="Resim Ekle"
+                                            Clicked="MusteriResimClicked"
+                                            CommandParameter="{Binding ID}"/>
+                        </MenuFlyout>
+                    </FlyoutBase.ContextFlyout>
+                    
+                </SwipeView>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>
